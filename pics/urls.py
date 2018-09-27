@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns=[
     url(r'^$',views.welcome,name = 'welcome'),
+    url('^today/$',views.pics_of_day,name='picsToday')
 ]
