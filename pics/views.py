@@ -1,22 +1,22 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse
-import datetime as dt
+# import datetime as dt
 
 # Create your views here.
 def welcome(request):
-    return render(request, 'welcome.html')
-    return render(request, 'all-pics/today-pics.html', {"date": date,})
+    # return render(request, 'welcome.html')
+    return render(request, 'all-pics/today-pics.html')
 
-def pics_of_day(request):
-    date = dt.date.today()
-    html = f'''
-        <html>
-            <body>
-                <h1> {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
+# def pics_of_day(request):
+#     date = dt.date.today()
+#     html = f'''
+#         <html>
+#             <body>
+#                 <h1> {date.day}-{date.month}-{date.year}</h1>
+#             </body>
+#         </html>
+#             '''
+#     return HttpResponse(html)
 
 # def convert_dates(dates):
 
