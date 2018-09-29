@@ -1,42 +1,48 @@
-{%extends 'all-pics/base.html'%}
-{% block content %}
-{{ block.super}}
-<div class="container">
-<div class="row p-0 m-0">
-  {% for pics_item in pics %}
-  <div class="col-4">
+{% extends 'all-pics/base.html' %} {% block content %} {{block.super}}
 
-    <img class="w-100" src="{{pics_item.image.url}}" data-toggle="modal" data-target="#exampleModal{{pics_item.id}}" height="300px" width="300px">
-    <div class="hover">
-        <h2>{{pics_item.name }}</h2>
+<div class="container-fluid" style="" ;>
+    <!-- displaying images -->
+    <div class="row">
+        {% for post in pics %}
+
+        <div class="col-md-3">
+            <!-- modal button-->
+            <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal{{post.id}}">
+                <img src="{{post.image.url }}" alt="" width="250" height="250">
+            </button>
+            <br>
+            <!-- modal -->
+        </div>
+        {% endfor %}
     </div>
-  </div>
-  {%endfor%}
 </div>
-<!--my modal-->
- {% for pics_item in pics %}
- <div class="modal fade" id="exampleModal{{pics_item.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-   aria-hidden="true">
-   <div class="modal-dialog modal-dialog-centered" role="document">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h5 class="modal-title" id="exampleModalLongTitle">{{pics_item.name }}</h5>
-         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span aria-hidden="true">&times;</span>
-         </button>
-       </div>
-       <div class="modal-body">
-         <img src="{{pics_item.image.url}}" class="img-fluid" data-toggle="modal" data-target="#exampleModal{{image.id}}">
-         <p> {{pics_item.description }}</p><label for="location"> Image location :{{pics_item.location }}</label>
-       </div>
-       <div class="modal-footer">
-         <input class="form-control" type="text" value="http://127.0.0.1:8000{{pics_item.image.url}}" id="thislinkhere-{{pics_item.id}}">
-         <a onclick="copyLink({{pics_item.id}})"><button type="button" class="btn btn-outline-secondary my-2 my-sm-0 link-btn">Copy
-             image Link</button></a>
-       </div>
-       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-     </div>
-   </div>
- </div>
- {% endfor%}
- {% endblock %}
+{% for post in pics %}
+<!-- modal content -->
+<div class="modal fade" id="myModal{{post.id}}" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>{{ post.name }}</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <img src="{{post.image.url }}" alt="" width="500" height="500">
+                <h4 class="modal-title">{{ post.description }}</h4>
+            </div>
+
+            <div class="modal-body">
+                {% for category in post.category.all %}
+                <p>{{ category.name }}</p>
+                {% endfor %} {% for location in post.location.all %}
+                <p>{{ location.name }}</p>
+                {% endfor %}
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="copyToClipboard('img{{photo.id}}')">Copy Link</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %} {% endblock %}
