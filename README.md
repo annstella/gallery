@@ -1,7 +1,9 @@
 # GALLERY.
+
 This is  a personal gallery application that you display your photos for others to see.
 
 ## Getting Started.
+
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. user of the application you should be able to:
 
 * View different photos that interest me.
@@ -21,20 +23,27 @@ These instructions will get you a copy of the project up and running on your loc
 
 
 #### Things you need to install the software.
-
+* Django==1.11
+* django-bootstrap3==11.0.0
+* Pillow==5.2.0
+* psycopg2==2.7.5
+* pytz==2018.5
 
 ##### Deployment
+
 Link to a live site: 
 
 
-###### Known bugs
+#### Known bugs
 
 
-####### Authors
+#### Authors
+
 Annstella Kagai
 
-######## License
+#### License
+
 This project is licensed under the MIT License
 
-######### Acknowledgments
+#### Acknowledgments
 Inspiration
