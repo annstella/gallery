@@ -31,7 +31,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ##### Deployment
 
-Link to a live site: 
+Link to a live site: https://pichazangu.herokuapp.com/
 
 
 #### Known bugs
