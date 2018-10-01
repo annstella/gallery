@@ -35,7 +35,7 @@ Link to a live site:
 
 
 #### Known bugs
-
+* The functiion for copying the link does not work,but I wil work on it later..
 
 #### Authors
 

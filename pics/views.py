@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404
-from .models import Image
+from .models import Image, Category
 # import datetime as dt
 
 # Create your views here.
@@ -14,12 +14,12 @@ def pics(request):
 
 def search_results(request):
   
-    if 'category' in request.GET and request.GET["category"]:
-        search_term = request.GET.get("category")
-        searched_categories = Category.search_by_category(search_term)
-        message = f"{search_category}"
+    if 'image' in request.GET and request.GET["image"]:
+        category = request.GET.get("image")
+        searched_categories = Image.search_image(category)
+        message = f"{category}"
 
-        return render(request, 'all-pics/search.html',{"message":message,"categories": searched_categories})
+        return render(request, 'all-pics/search.html',{"message":message,"images": searched_categories})
 
     else:
         message = " Found 0 images for the search term"
